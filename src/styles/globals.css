@@ -1,3 +1,258 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --background: #d8d8d8;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.landing-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom right, #1a1a1a, #2d2d2d);
+  color: white;
+}
+
+.landing-title {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.landing-button {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.landing-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* Home Page Styles */
+.home-page {
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+    color: black;
+    background-color: #121212;  /* Dark base */
+    background-image: 
+        linear-gradient(135deg, rgba(18, 18, 18, 0.95) 0%, rgba(35, 35, 35, 0.95) 100%),
+        repeating-linear-gradient(
+            to right,
+            transparent 0px,
+            transparent 2px,
+            rgba(64, 195, 255, 0.03) 2px,
+            rgba(64, 195, 255, 0.03) 4px
+        );
+    background-attachment: fixed;
+    position: relative;
+    overflow: hidden;
+}
+
+.home-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(64, 195, 255, 0.1) 0%,
+            transparent 50%
+        );
+    pointer-events: none;
+}
+
+.home-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border-bottom: 3px solid rgba(255, 255, 255, 0.9);
+    padding-bottom: 1rem;
+}
+
+.home-header h1 {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;  /* Increased from 500 to 700 for bolder text */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);  /* Added subtle shadow for better contrast */
+    letter-spacing: 0.5px;  /* Added slight letter spacing for better readability */
+}
+
+.home-header .mb-20 {
+    margin-bottom: 0;
+}
+
+.wallet-button-wrapper {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.home-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 20px;
+}
+
+.side-container {
+    aspect-ratio: 16/29;
+    padding: 1rem;
+    background: linear-gradient(145deg, #1a1a1a 0%, #2d2d2d 100%);
+    backdrop-filter: blur(8px);
+    border: 3px solid rgb(7, 28, 219);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    height: fit-content;
+}
+
+.left-container {
+    margin-right: 1rem;
+}
+
+.right-container {
+    margin-left: 1rem;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.image-container {
+    aspect-ratio: 16/12.5;
+    background: linear-gradient(145deg, #1a1a1a 0%, #2d2d2d 100%);
+    backdrop-filter: blur(8px);
+    border: 3px solid rgb(255, 255, 255);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.placeholder-text {
+    color: #ffffff;
+}
+
+.input-wrapper {
+    display: flex;
+    gap: 10px;
+}
+
+.message-input {
+    flex: 1;
+    padding: 0.5rem;
+    border-radius: 4px;
+    background: linear-gradient(145deg, #1a1a1a 0%, #2d2d2d 100%);
+    backdrop-filter: blur(8px);
+    border: 3px solid rgb(255, 255, 255);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
+.send-button {
+    padding: 0.5rem;
+    background-color: #40c3ff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.send-button:hover {
+    background-color: #2ea6e8;
+    transform: translateY(-2px);
+}
+
+.send-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.mint-button {
+    width: 100%;
+    padding: 0.5rem 1rem;
+}
+
+.left-container-content h2,
+.left-container-content p {
+    color: white;
+}
+
+.right-container-content h2,
+.right-container-content p {
+    color: white;
+}
+
+/* Add placeholder color for input */
+.message-input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Style for the Cardano wallet button */
+.home-header .mb-20 button {
+    border: 2px solid rgb(255, 255, 255) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+    border-radius: 8px !important;
+    background: linear-gradient(145deg, #1a1a1a 0%, #2d2d2d 100%) !important;
+    color: white !important;
+    transition: all 0.3s ease !important;
+}
+
+.home-header .mb-20 button:hover {
+    transform: translateY(-2px) !important;
+    background: linear-gradient(145deg, #2d2d2d 0%, #1a1a1a 100%) !important;
+}
+
+/* Button styling */
+.background-gradient {
+    background: linear-gradient(145deg, #1a1a1a 0%, #2d2d2d 100%);
+    backdrop-filter: blur(8px);
+}
+
+.border-blue {
+    border: 3px solid rgb(7, 39, 219);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.hover-effect {
+    transition: all 0.3s ease;
+}
+
+.hover-effect:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(145deg, #2d2d2d 0%, #1a1a1a 100%);
+}
