@@ -1,0 +1,128 @@
+{
+  "preamble": {
+    "title": "mrballin/aikenv4",
+    "description": "Aiken contracts for project 'mrballin/aikenv4'",
+    "version": "0.0.0",
+    "plutusVersion": "v3",
+    "compiler": {
+      "name": "Aiken",
+      "version": "v1.1.7+e2fb28b"
+    },
+    "license": "Apache-2.0"
+  },
+  "validators": [
+    {
+      "title": "mint.ea_nft.mint",
+      "redeemer": {
+        "title": "redeemer",
+        "schema": {
+          "$ref": "#/definitions/mint~1ConditionsRedeemer"
+        }
+      },
+      "parameters": [
+        {
+          "title": "unique_utxo",
+          "schema": {
+            "$ref": "#/definitions/cardano~1transaction~1OutputReference"
+          }
+        },
+        {
+          "title": "token_name",
+          "schema": {
+            "$ref": "#/definitions/AssetName"
+          }
+        }
+      ],
+      "compiledCode": "5901d3010100323232323232322232253330053232323232533300a3370e900018059baa001132533300b3370e900018061baa0031323232323232533301430170021533301132330010013758602e60286ea802c894ccc05800452809991299980a99baf301a3017375400402829444cc010010004c060004c06400454ccc044c8c94ccc058c0640084c94ccc050cdc39bad3016002480084cdc78008088a50375c60280022c602e00264a66602466e1d200230133754002297adef6c6013756602e60286ea8004c8cc004004dd5980b980c180c180c180c180a1baa00b22533301600114c103d87a800013233322253330173372201a0062a66602e66e3c03400c4cdd2a4000660366e980092f5c02980103d87a8000133006006001375c602a0026eacc058004c068008c0600044c8c8cc004004dd6180c180c980c980c980c980c980c980c980c980a9baa00c22533301700114a026644a66602c66e3c0080145288998020020009bae3019001301a001375c602c602e60266ea80245280a5016375c602a002602a0046eb8c04c004c04c008dd6980880098069baa00316375c601e60186ea800458c038c03c00cc034008c030008c030004c01cdd50008a4c26cac6eb80055cd2ab9d5573caae7d5d02ba15745",
+      "hash": "b22240e1da5e7dbf27748f278ef983376db40d7eaee20ab9dacb2784"
+    },
+    {
+      "title": "mint.ea_nft.else",
+      "redeemer": {
+        "schema": {}
+      },
+      "parameters": [
+        {
+          "title": "unique_utxo",
+          "schema": {
+            "$ref": "#/definitions/cardano~1transaction~1OutputReference"
+          }
+        },
+        {
+          "title": "token_name",
+          "schema": {
+            "$ref": "#/definitions/AssetName"
+          }
+        }
+      ],
+      "compiledCode": "5901d3010100323232323232322232253330053232323232533300a3370e900018059baa001132533300b3370e900018061baa0031323232323232533301430170021533301132330010013758602e60286ea802c894ccc05800452809991299980a99baf301a3017375400402829444cc010010004c060004c06400454ccc044c8c94ccc058c0640084c94ccc050cdc39bad3016002480084cdc78008088a50375c60280022c602e00264a66602466e1d200230133754002297adef6c6013756602e60286ea8004c8cc004004dd5980b980c180c180c180c180a1baa00b22533301600114c103d87a800013233322253330173372201a0062a66602e66e3c03400c4cdd2a4000660366e980092f5c02980103d87a8000133006006001375c602a0026eacc058004c068008c0600044c8c8cc004004dd6180c180c980c980c980c980c980c980c980c980a9baa00c22533301700114a026644a66602c66e3c0080145288998020020009bae3019001301a001375c602c602e60266ea80245280a5016375c602a002602a0046eb8c04c004c04c008dd6980880098069baa00316375c601e60186ea800458c038c03c00cc034008c030008c030004c01cdd50008a4c26cac6eb80055cd2ab9d5573caae7d5d02ba15745",
+      "hash": "b22240e1da5e7dbf27748f278ef983376db40d7eaee20ab9dacb2784"
+    }
+  ],
+  "definitions": {
+    "Action": {
+      "title": "Action",
+      "dataType": "integer"
+    },
+    "AssetName": {
+      "title": "AssetName",
+      "dataType": "bytes"
+    },
+    "ByteArray": {
+      "title": "ByteArray",
+      "dataType": "bytes"
+    },
+    "Int": {
+      "dataType": "integer"
+    },
+    "VerificationKeyHash": {
+      "title": "VerificationKeyHash",
+      "dataType": "bytes"
+    },
+    "cardano/transaction/OutputReference": {
+      "title": "OutputReference",
+      "description": "An `OutputReference` is a unique reference to an output on-chain. The `output_index`\n corresponds to the position in the output list of the transaction (identified by its id)\n that produced that output",
+      "anyOf": [
+        {
+          "title": "OutputReference",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": [
+            {
+              "title": "transaction_id",
+              "$ref": "#/definitions/ByteArray"
+            },
+            {
+              "title": "output_index",
+              "$ref": "#/definitions/Int"
+            }
+          ]
+        }
+      ]
+    },
+    "mint/ConditionsRedeemer": {
+      "title": "ConditionsRedeemer",
+      "anyOf": [
+        {
+          "title": "ConditionsRedeemer",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": [
+            {
+              "title": "action",
+              "$ref": "#/definitions/Action"
+            },
+            {
+              "title": "owner",
+              "$ref": "#/definitions/VerificationKeyHash"
+            },
+            {
+              "title": "image_hash",
+              "$ref": "#/definitions/ByteArray"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

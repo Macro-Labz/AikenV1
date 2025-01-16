@@ -1,24 +1,34 @@
-utxoin="________________INSERT UTXO HASH HERE______________#__INSERT UTXO INDEX HERE__"   
-address=$(cat ./compiled/INSERT CONTRACT ADDRESS HERE)
-output="INSERT OUTPUT AMOUNT HERE"
-  #utxoin will have the utxo hash and the index for use in the transaction
-  #address will be the address of the wallet that will send the funds
-  #output will be the amount of funds to be sent to the address
+#!/bin/bash
+
+PAYMENT_AMOUNT=7000000  # 7 ADA in lovelace
+utxoin="$1"   # Pass UTxO as parameter
+address=$(cat ./compiled/simple.addr)
+signing_key="$3"  # User's signing key file path
+
+# Let cardano-cli calculate the minimum fee
+fee=$(cardano-cli conway transaction build \
+  --tx-body-file simple.unsigned \
+  --tx-in-count 1 \
+  --tx-out-count 2 \
+  --witness-count 1 \
+  --testnet-magic 2)
+
+TOTAL_AMOUNT=$((PAYMENT_AMOUNT + fee))
+
 cardano-cli conway transaction build \
   --testnet-magic 2 \
   --tx-in $utxoin \
-  --tx-out $address+$output \
+  --tx-out $address+$TOTAL_AMOUNT \
   --tx-out-datum-hash-file ./values/datum.json \
-  --change-address _________________INSERT CHANGE ADDRESS HERE________________ \
+  --change-address $2 \
   --out-file simple.unsigned
- #change address is the address of the wallet that will send the remaining funds in the utxo after the transaction is completed and fees are paid
 
 cardano-cli conway transaction sign \
     --tx-body-file simple.unsigned \
-    --signing-key-file $HOME/env/wallets/____INSERT WALLET NAME HERE____/______INSERT SIGNING KEY FILE HERE______ \
+    --signing-key-file $signing_key \
     --testnet-magic 2 \
     --out-file simple.signed
- #signing key file is the signing key of the wallet that will send the funds
+
 cardano-cli conway transaction submit \
     --testnet-magic 2 \
     --tx-file simple.signed

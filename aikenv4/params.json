@@ -1,0 +1,7 @@
+{
+  "unique_utxo": {
+    "transaction_id": "1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef",
+    "output_index": 0
+  },
+  "token_name": "4e46542d41492d47454e2d54455354"
+} 
